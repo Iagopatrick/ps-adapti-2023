@@ -12,13 +12,13 @@ class Aluno extends Model
     protected $fillable = [
         'nome',
         'descricao',
-        'image',
+        'imagem',
         'curso_id',
-        'esta_formado'
+        'contratado'
     ];
 
 
-    public function alunos(){
+    public function curso(){
         return $this->belongsTo(Curso::class, 'curso_id');
     }
 

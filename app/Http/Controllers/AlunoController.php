@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AlunoRequest;
 use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Produto;
@@ -34,14 +35,25 @@ class AlunoController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(AlunoRequest $request)
     {
-
+       
+        $data = $request->all();
+        
+        if($request->hasFile('image')){
+            $data['image'] = '/storage/' . $request->file('image')->store('aluno', 'public');
+        }
+        
+        $this->alunos->create($data);
+        return redirect()->route('aluno.index')->with('success','Aluno cadastrado com sucesso!');
     }
 
 
     public function show($id)
     {
+        $aluno = $this->alunos->find($id);
+        $aluno = $aluno->load('curso');
+        return response()->json($aluno);
     }
 
 

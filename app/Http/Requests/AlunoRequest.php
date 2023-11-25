@@ -25,15 +25,19 @@ class AlunoRequest extends FormRequest
     {
         return [
           'nome' => ['required','string'],
-          'descricacao' => ['required','string'],
-          'photo' => ['required','string'],
-          'curso_id' => ['required','string'],
-          'esta_formado' => ['required','string'],
+          'descricacao' => ['max:3000'],
+          'imagem' => ['image'],
+          'curso_id' => ['required'],
+          'contratado' => [''],
         ];
     }
     public function messages(){
       return [
-        
+          'nome.required' => "O campo precisa ser informado",
+          'descricao.max' => "O campo deve ter no máximo 3000 caracteres",
+          'imagem.image' => "A imagem precisa ser dos tipos PNG, JPEG, JPG, etc...",
+          'curso_id.required' => "Coloque o curso do aluno!",
+
       ];
     }
 }

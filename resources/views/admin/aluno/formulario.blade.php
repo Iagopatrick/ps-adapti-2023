@@ -44,6 +44,8 @@
     </div>
 </div>
 
+
+
 {{-- Curso --}}
 <div class="row">
     <label class="col-sm-2 col-form-label">{{ __('Curso') }}</label>
