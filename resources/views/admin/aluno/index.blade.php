@@ -160,7 +160,7 @@
                 $("#detalhes-contratado").val(resposta.contratado);
                 $("#detalhes-descricao").val(resposta.descricao);
                 $("#detalhes-curso").val(resposta.curso.curso);
-                $("#detalhes-imagem").attr('src', '/storage/' + resposta.imagem);
+                $("#detalhes-imagem").attr('src', '' + resposta.imagem);
             });
         })
         /* js para abrir Modal de excluir de forma dinâmica */

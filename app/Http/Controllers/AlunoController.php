@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AlunoRequest;
+use App\Http\Requests\AlunoUpdateRequest;
 use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Produto;
@@ -40,8 +41,8 @@ class AlunoController extends Controller
        
         $data = $request->all();
         
-        if($request->hasFile('image')){
-            $data['image'] = '/storage/' . $request->file('image')->store('aluno', 'public');
+        if($request->hasFile('imagem')){
+            $data['imagem'] = '/storage/' . $request->file('imagem')->store('aluno', 'public');
         }
         
         $this->alunos->create($data);
@@ -59,14 +60,30 @@ class AlunoController extends Controller
 
     public function edit($id)
     {
+        $aluno = $this->alunos->find($id);
+        $cursos = $this->cursos->all();
+        return view('admin.aluno.crud', compact('aluno','cursos'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(AlunoUpdateRequest $request, $id)
     {
+        $data = $request->all();
+        $aluno = $this->alunos->find($id);
+        if($request->hasFile('imagem')){
+            Storage::disk('public')->delete(substr($aluno->imagem, 9));
+            $data['imagem'] = '/storage/' . $request->file('imagem')->store('aluno', 'public');
+        }
+
+        $aluno->update($data);
+
+        return redirect()->route('aluno.index')->with('success','Aluno atualizado com sucesso');
     }
 
     public function destroy($id)
     {
+        $aluno = $this->alunos->find($id);
+        $aluno->delete();
+        return redirect()->route('aluno.index')->with('success','Aluno excluido');
     }
 }
