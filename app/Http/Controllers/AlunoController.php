@@ -41,8 +41,13 @@ class AlunoController extends Controller
        
         $data = $request->all();
         
+
         if($request->hasFile('imagem')){
             $data['imagem'] = '/storage/' . $request->file('imagem')->store('aluno', 'public');
+        }
+
+        if(!$request->has('contratado')){
+            $data['contratado'] = 0;
         }
         
         $this->alunos->create($data);
@@ -75,6 +80,10 @@ class AlunoController extends Controller
             $data['imagem'] = '/storage/' . $request->file('imagem')->store('aluno', 'public');
         }
 
+        if(!$request->has('contratado')){
+            $data['contratado'] = 0;
+        }
+
         $aluno->update($data);
 
         return redirect()->route('aluno.index')->with('success','Aluno atualizado com sucesso');
@@ -83,6 +92,7 @@ class AlunoController extends Controller
     public function destroy($id)
     {
         $aluno = $this->alunos->find($id);
+        Storage::delete('public/' . $aluno->imagem);
         $aluno->delete();
         return redirect()->route('aluno.index')->with('success','Aluno excluido');
     }
