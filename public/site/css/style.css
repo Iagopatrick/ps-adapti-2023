@@ -2,41 +2,71 @@
     margin: 0;
     padding: 0;
     box-sizing: 0;
+    font-family: "Titillium Web", sans-serif;
 }
-
+/* Main */
 .main {
     display: flex;
     justify-content: space-between;
+    height: 100%;
+    background-color: #dbead5;
 }
 
-#perfil-nav div {
-    margin-bottom: 50px;
-    padding: 5px;
+body {
+    height: 100%;
+    background-color: #dbead5;
+    margin: 0;
+    padding-right: 125px;
 }
 
-#perfil {
-    margin-left: 50px;
-}
+/* navbar */
 
-#lateral-esquerda,
-#perfil {
+#navbar {
     display: flex;
     flex-direction: column;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    padding: 5px;
+    background-color: #2e8b57;
+    height: 100%;
+    gap: 40px;
 
-    background-color: #4682b4;
+    /* Deixando a navbar fixa */
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-radius: 1.5rem 0 0 1.5rem;
 }
 
-#container-cards {
+#navbar > button {
+    border: none;
+    background-color: #2e8b57;
+    cursor: pointer;
+    border-radius: 1.5rem;
+}
+
+#navbar .logo {
+    width: 120px;
+}
+
+#navbar .div-logo {
+    margin-top: auto;
+    width: 100px;
+}
+/* Cards e conteudo principal */
+
+#container-cards-id {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 25px;
     gap: 40px;
+    margin-left: 25px;
 }
 .card {
-    background-color: #228b22;
+    background-color: #2e8b57;
     display: flex;
-    flex-direction: column; /*Muda o eixo principal, no caso para a vertical*/
+    flex-direction: column;
     gap: 10px;
 
     width: 250px;
@@ -49,8 +79,14 @@
     color: white;
 }
 
+img {
+    border-radius: 50%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
 .card button {
-    background-color: #b22222;
+    background-color: #fa7f72;
     border-radius: 1.2rem;
     padding: 10px 20px;
     color: white;
@@ -58,6 +94,61 @@
     cursor: pointer;
 }
 
-#lateral-esquerda {
-    background-color: #4682b4;
+.card .nao-contratado {
+    background-color: #fffafa;
+    color: #000080;
+    padding: 10px 20px;
+    width: 250px;
+}
+
+.card .descricao-div {
+    max-height: 70px;
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.fonte-menor {
+    font-size: 14px;
+    font-weight: 100;
+}
+
+/* footer  */
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        width: 100px;
+    }
+    #navbar {
+        width: 16px;
+    }
+    footer {
+        width: 300px;
+        font-size: small;
+    }
+    .card .nao-contratado {
+        width: 100px;
+    }
+}
+
+/* darkmode */
+.main.darkmode,
+body.darkmode {
+    background-color: #0f1a07;
+}
+
+.container-cards.darkmode #card-principal.card,
+#navbar.darkmode,
+#navbar.darkmode button {
+    background-color: #004680;
+}
+
+body.darkmode footer {
+    color: white;
 }

@@ -51,6 +51,10 @@ Route::middleware('locale')->group(function () {
             Route::put('profile', 'update')->name('update');
             Route::put('profile/password', 'password')->name('password');
         });
+
+
+        // Rota para atualizar o botão contratado
+        Route::post('/contratar/{aluno}', [AlunoController::class, 'contratar'])->name('aluno.contratar');
     });
 
     Route::get('/', [SiteController::class, 'index'])->name('site');

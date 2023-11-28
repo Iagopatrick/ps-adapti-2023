@@ -96,4 +96,11 @@ class AlunoController extends Controller
         $aluno->delete();
         return redirect()->route('aluno.index')->with('success','Aluno excluido');
     }
+
+// Função para atualizar o front
+    public function contratar(Aluno $aluno)
+    {
+        $aluno->update(['contratado' => true]);
+        return redirect()->back()->with('status', 'Aluno contratado com sucesso!');
+    }
 }
