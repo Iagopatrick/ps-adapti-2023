@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+#perfil-nav div {
+    margin-bottom: 50px;
+    padding: 5px;
+}
+
+#perfil {
+    margin-left: 50px;
+}
+
+#lateral-esquerda,
+#perfil {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #4682b4;
+}
+
+#container-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    gap: 40px;
+}
+.card {
+    background-color: #228b22;
+    display: flex;
+    flex-direction: column; /*Muda o eixo principal, no caso para a vertical*/
+    gap: 10px;
+
+    width: 250px;
+    border-radius: 1.5rem;
+
+    padding: 25px;
+    box-shadow: 5px 5px 15px 1px rgba(0, 0, 0, 0.41);
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+}
+
+.card button {
+    background-color: #b22222;
+    border-radius: 1.2rem;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#lateral-esquerda {
+    background-color: #4682b4;
+}
